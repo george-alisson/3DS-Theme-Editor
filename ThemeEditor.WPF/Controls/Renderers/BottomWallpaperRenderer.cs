@@ -16,26 +16,26 @@ namespace ThemeEditor.WPF.Controls.Renderers
     {
         private const int BOT_SCR_HEIGHT = 240;
         private const int BOT_SCR_WIDTH = 320;
-
+        private const int SLOTS = 2;
         private static readonly RenderToolFactory RenderToolFactory = new RenderToolFactory();
 
         public static readonly DependencyProperty ThemeProperty = DependencyProperty.Register
             (nameof(Theme),
-                typeof (ThemeViewModel),
-                typeof (BottomWallpaperRenderer),
+                typeof(ThemeViewModel),
+                typeof(BottomWallpaperRenderer),
                 new FrameworkPropertyMetadata(default(ThemeViewModel), FrameworkPropertyMetadataOptions.AffectsRender));
 
         private bool _isListening;
 
         public ThemeViewModel Theme
         {
-            get { return (ThemeViewModel) GetValue(ThemeProperty); }
+            get { return (ThemeViewModel)GetValue(ThemeProperty); }
             set { SetValue(ThemeProperty, value); }
         }
 
         static BottomWallpaperRenderer()
         {
-            Type ownerType = typeof (BottomWallpaperRenderer);
+            Type ownerType = typeof(BottomWallpaperRenderer);
             IsEnabledProperty
                 .OverrideMetadata(ownerType, new FrameworkPropertyMetadata(false, OnIsEnabledChanged));
 
@@ -61,9 +61,9 @@ namespace ThemeEditor.WPF.Controls.Renderers
             ClipToBoundsProperty.OverrideMetadata(ownerType,
                 new FrameworkPropertyMetadata(true, null, (o, value) => true));
             WidthProperty.OverrideMetadata(ownerType,
-                new FrameworkPropertyMetadata((double) BOT_SCR_WIDTH, null, (o, value) => (double) BOT_SCR_WIDTH));
+                new FrameworkPropertyMetadata((double)BOT_SCR_WIDTH, null, (o, value) => (double)BOT_SCR_WIDTH));
             HeightProperty.OverrideMetadata(ownerType,
-                new FrameworkPropertyMetadata((double) BOT_SCR_HEIGHT, null, (o, value) => (double) BOT_SCR_HEIGHT));
+                new FrameworkPropertyMetadata((double)BOT_SCR_HEIGHT, null, (o, value) => (double)BOT_SCR_HEIGHT));
         }
 
         public BottomWallpaperRenderer()
@@ -78,8 +78,8 @@ namespace ThemeEditor.WPF.Controls.Renderers
             {
                 return;
             }
-            bool oldValue = (bool) args.OldValue;
-            bool newValue = (bool) args.NewValue;
+            bool oldValue = (bool)args.OldValue;
+            bool newValue = (bool)args.NewValue;
             target.OnIsEnabledChanged(oldValue, newValue);
         }
 
@@ -95,22 +95,22 @@ namespace ThemeEditor.WPF.Controls.Renderers
             switch (drawType)
             {
                 case BottomDrawType.SolidColor:
-                {
-                    OnRender_SolidColor(dc,
-                        Theme.Flags.BottomBackgroundInnerColor,
-                        Theme.Flags.BottomBackgroundOuterColor);
-                    break;
-                }
+                    {
+                        OnRender_SolidColor(dc,
+                            Theme.Flags.BottomBackgroundInnerColor,
+                            Theme.Flags.BottomBackgroundOuterColor);
+                        break;
+                    }
                 case BottomDrawType.None:
-                {
-                    OnRender_SolidColor(dc, false, false);
-                    break;
-                }
+                    {
+                        OnRender_SolidColor(dc, false, false);
+                        break;
+                    }
                 case BottomDrawType.Texture:
-                {
-                    OnRender_BackgroundTexture(dc);
-                    break;
-                }
+                    {
+                        OnRender_BackgroundTexture(dc);
+                        break;
+                    }
             }
         }
 
@@ -199,22 +199,7 @@ namespace ThemeEditor.WPF.Controls.Renderers
                 dc.DrawLine(innerGlowPen, p0, p1);
             }
             // Slots Area
-            {
-                for (int pX = 1; pX < 7; pX++)
-                    for (int pY = 0; pY < 3; pY++)
-                    {
-                        const double GAP = BOT_SCR_WIDTH / 6.0;
-                        const double OFFSET = 31 + (170 - 2 * GAP) / 2;
-                        const double RADIUS = 2;
-
-                        Rect area = new Rect(GAP * pX - 8, Math.Floor(GAP * pY + OFFSET), 16, 16);
-
-                        Point p0 = new Point(area.X + RADIUS, area.Y);
-                        Point p1 = new Point(area.X + area.Width - RADIUS, area.Y);
-                        dc.DrawRoundedRectangle(null, innerEdgePen, area, RADIUS, RADIUS);
-                        dc.DrawLine(innerGlowPen, p0, p1);
-                    }
-            }
+            DrawSlots(dc, innerEdgePen, innerGlowPen);
         }
 
         private void OnRender_BackgroundTexture(DrawingContext dc)
@@ -243,7 +228,7 @@ namespace ThemeEditor.WPF.Controls.Renderers
                 else if (flipEnable)
                 {
                     var posMap = _isListening
-                        ? (int) Math.Floor(CompositionTargetEx.SecondsFromStart % 3)
+                        ? (int)Math.Floor(CompositionTargetEx.SecondsFromStart % 3)
                         : 0;
 
                     dc.DrawImage(bgBitmap, new Rect(-posMap * BOT_SCR_WIDTH, 0, bgBitmap.Width, bgBitmap.Height));
@@ -251,7 +236,7 @@ namespace ThemeEditor.WPF.Controls.Renderers
                 else if (bounceEnable)
                 {
                     var posMap = _isListening
-                        ? (int) Math.Floor(CompositionTargetEx.SecondsFromStart % 4)
+                        ? (int)Math.Floor(CompositionTargetEx.SecondsFromStart % 4)
                         : 0;
 
                     posMap = posMap == 3
@@ -265,18 +250,34 @@ namespace ThemeEditor.WPF.Controls.Renderers
                 }
             }
             // Slots Area
-            {
-                var innerSlotBrush = RenderToolFactory.GetTool<Brush>(new SolidColorBrushTool(Colors.White, 0.2));
-                for (int pX = 1; pX < 7; pX++)
-                    for (int pY = 0; pY < 3; pY++)
-                    {
-                        const double GAP = BOT_SCR_WIDTH / 6.0;
-                        const double OFFSET = 31 + (170 - 2 * GAP) / 2;
-                        const double RADIUS = 2;
+            var innerSlotBrush = RenderToolFactory.GetTool<Brush>(new SolidColorBrushTool(Colors.White, 0.2));
+            DrawSlots(dc, innerSlotBrush: innerSlotBrush);
+        }
 
-                        Rect area = new Rect(GAP * pX - 8, GAP * pY + OFFSET, 16, 16);
+        private static void DrawSlots(DrawingContext dc, Pen innerEdgePen = null, Pen innerGlowPen = null, Brush innerSlotBrush = null)
+        {
+            for (int pX = 1; pX < 7; pX++)
+            {
+                for (int pY = 0; pY < SLOTS; pY++)
+                {
+                    const double GAP = BOT_SCR_WIDTH / 4.0;
+                    const double OFFSET = 63 + (170 - 2 * GAP) / 2;
+                    const double RADIUS = 2;
+
+                    Rect area = new Rect(GAP * pX - 8, Math.Floor(GAP * pY + OFFSET), 24, 24);
+
+                    if (innerSlotBrush != null)
+                    {
                         dc.DrawRoundedRectangle(innerSlotBrush, null, area, RADIUS, RADIUS);
                     }
+                    else
+                    {
+                        Point p0 = new Point(area.X + RADIUS, area.Y);
+                        Point p1 = new Point(area.X + area.Width - RADIUS, area.Y);
+                        dc.DrawRoundedRectangle(null, innerEdgePen, area, RADIUS, RADIUS);
+                        dc.DrawLine(innerGlowPen, p0, p1);
+                    }
+                }
             }
         }
 

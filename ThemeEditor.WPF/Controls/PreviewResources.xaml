@@ -36,6 +36,27 @@
             </RectangleGeometry>
         </CombinedGeometry.Geometry2>
     </CombinedGeometry>
+    <CombinedGeometry x:Key="CursorLargeGeometry" GeometryCombineMode="Exclude">
+        <CombinedGeometry.Geometry1>
+            <GeometryGroup>
+                <RectangleGeometry
+                    RadiusX="8"
+                    RadiusY="8"
+                    Rect="-34,-36,72,72" />
+                <RectangleGeometry
+                    RadiusX="6"
+                    RadiusY="6"
+                    Rect="-28,-30,60,60" />
+            </GeometryGroup>
+        </CombinedGeometry.Geometry1>
+        <CombinedGeometry.Geometry2>
+            <RectangleGeometry Rect="-35,-38,74,74">
+                <RectangleGeometry.Transform>
+                    <RotateTransform Angle="45" />
+                </RectangleGeometry.Transform>
+            </RectangleGeometry>
+        </CombinedGeometry.Geometry2>
+    </CombinedGeometry>
     <Style x:Key="CursorStyleBase" TargetType="{x:Type Path}">
         <Style.Setters>
             <Setter Property="SnapsToDevicePixels" Value="False" />
@@ -198,13 +219,52 @@
             RadiusY="2"
             Rect="-16,-16,32,32" />
     </GeometryGroup>
+    <GeometryGroup x:Key="NoCartLargeGeometryFore">
+        <CombinedGeometry GeometryCombineMode="Union">
+            <CombinedGeometry.Geometry1>
+                <GeometryGroup>
+                    <RectangleGeometry
+                        RadiusX="2"
+                        RadiusY="2"
+                        Rect="-31,-35,33,34" />
+                    <RectangleGeometry
+                        RadiusX="2"
+                        RadiusY="2"
+                        Rect="1,-35,33,34" />
+                    <RectangleGeometry
+                        RadiusX="2"
+                        RadiusY="2"
+                        Rect="1,-1,33,34" />
+                    <RectangleGeometry
+                        RadiusX="12"
+                        RadiusY="12"
+                        Rect="-31,-1,33,34" />
+                </GeometryGroup>
+            </CombinedGeometry.Geometry1>
+            <CombinedGeometry.Geometry2>
+                <GeometryGroup FillRule="Nonzero">
+                    <RectangleGeometry Rect="-16,-35,32,68" />
+                    <RectangleGeometry Rect="-31,-16,65,32" />
+                </GeometryGroup>
+            </CombinedGeometry.Geometry2>
+        </CombinedGeometry>
+        <RectangleGeometry
+            RadiusX="2"
+            RadiusY="2"
+            Rect="-22,-25,48,48" />
+    </GeometryGroup>
+    <RectangleGeometry
+        x:Key="FileCartGeometry"
+        RadiusX="12"
+        RadiusY="12"
+        Rect="-31,-35,65,68" />
     <Style x:Key="NoCartStyleFore" TargetType="{x:Type Path}">
         <Setter Property="Fill" Value="#d3d3d1" />
         <Setter Property="Stroke" Value="#b9b9b7" />
+        <!--<Setter Property="Opacity" Value="0.5" />-->
     </Style>
     <Style x:Key="NoCartStyleBack" TargetType="{x:Type Path}">
         <Setter Property="Fill" Value="#e0e0de" />
-
     </Style>
 
     <!--  File  -->
@@ -214,11 +274,47 @@
         RadiusY="8"
         Rect="-24,-24,48,48" />
     <RectangleGeometry
+        x:Key="FileLargeGeometry"
+        RadiusX="12"
+        RadiusY="12"
+        Rect="-32,-35,68,68" />
+    <RectangleGeometry
         x:Key="FileLabelGeometry"
         RadiusX="3"
         RadiusY="3"
         Rect="-19,-19,38,38" />
+    <RectangleGeometry
+        x:Key="FileLargeLabelGeometry"
+        RadiusX="3"
+        RadiusY="3"
+        Rect="-22,-25,48,48" />
     <Style x:Key="FileStyleBack" TargetType="{x:Type Path}">
+        <Setter Property="Fill" Value="#f6f6f6" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Flags.FileColor}" Value="True">
+                <Setter Property="Fill">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{Binding Path=Colors.File.Main}" />
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Flags.FileTexture}" Value="True">
+                <Setter Property="Fill">
+                    <Setter.Value>
+                        <ImageBrush
+                            ImageSource="{Binding Path=Textures.FileSmall.Bitmap}"
+                            Stretch="Uniform"
+                            TileMode="FlipX"
+                            Viewbox="0,0,25,49"
+                            ViewboxUnits="Absolute"
+                            Viewport="0.5,1,0.5,1"
+                            ViewportUnits="RelativeToBoundingBox" />
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="FileLargeStyleBack" TargetType="{x:Type Path}">
         <Setter Property="Fill" Value="#f6f6f6" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=Flags.FileColor}" Value="True">
@@ -294,6 +390,9 @@
         RadiusY="5"
         Rect="-15,-17,36,36" />
     <RectangleGeometry
+        x:Key="FolderItemClipGeometry"
+        Rect="-20,-23,40,9" />
+    <RectangleGeometry
         x:Key="FolderGeometryForeClosed"
         RadiusX="3"
         RadiusY="3"
@@ -310,10 +409,32 @@
         a 3,3 0 0 1  3 -3
         z
     </PathGeometry>
+    <!--Large-->
+    <RectangleGeometry
+        x:Key="FolderLargeItemGeometry"
+        RadiusX="5"
+        RadiusY="5"
+        Rect="-20,-24,52,52" />
+    <RectangleGeometry
+        x:Key="FolderLargeItemClipGeometry"
+        Rect="-20,-35,48,16" />
+    <RectangleGeometry
+        x:Key="FolderLargeGeometryForeClosed"
+        RadiusX="3"
+        RadiusY="3"
+        Rect="-32,-19,68,52" />
+    <PathGeometry x:Key="FolderLargeGeometryBackBase">
+        M -32 -6 L -32 -23 A 5 6 0 0 1 -27 -29 L -4 -29 L 4 -23 L 32 -23 A 4 4 0 0 1 36 -19 L 36 -6
+    </PathGeometry>
+    <!--Large-->
     <CombinedGeometry
         x:Key="FolderGeometryBackClosed"
         Geometry1="{StaticResource FolderGeometryForeClosed}"
         Geometry2="{StaticResource FolderGeometryBackBase}" />
+    <CombinedGeometry
+        x:Key="FolderLargeGeometryBackClosed"
+        Geometry1="{StaticResource FolderLargeGeometryForeClosed}"
+        Geometry2="{StaticResource FolderLargeGeometryBackBase}" />
     <CombinedGeometry
         x:Key="FolderGeometryBackOpen"
         Geometry1="{StaticResource FolderGeometryForeOpen}"
@@ -425,6 +546,27 @@
         <Setter Property="Clip" Value="{StaticResource FolderGeometryBackClosed}" />
     </Style>
     <Style
+        x:Key="FolderLargeStyleBackClosed"
+        BasedOn="{StaticResource FolderStyleBack}"
+        TargetType="{x:Type Path}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Flags.FolderTexture}" Value="True">
+                <Setter Property="Fill">
+                    <Setter.Value>
+                        <ImageBrush
+                            ImageSource="{Binding Path=Textures.FolderClosed.Bitmap}"
+                            Stretch="Uniform"
+                            TileMode="None"
+                            Viewbox="1,1,72,62"
+                            ViewboxUnits="Absolute" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="StrokeThickness" Value="0" />
+            </DataTrigger>
+        </Style.Triggers>
+        <Setter Property="Clip" Value="{StaticResource FolderLargeGeometryBackClosed}" />
+    </Style>
+    <Style
         x:Key="FolderStyleBackOpen"
         BasedOn="{StaticResource FolderStyleBack}"
         TargetType="{x:Type Path}">
@@ -451,6 +593,12 @@
         BasedOn="{StaticResource FolderStyleFore}"
         TargetType="{x:Type Path}">
         <Setter Property="Clip" Value="{StaticResource FolderGeometryForeClosed}" />
+    </Style>
+    <Style
+        x:Key="FolderLargeStyleForeClosed"
+        BasedOn="{StaticResource FolderStyleFore}"
+        TargetType="{x:Type Path}">
+        <Setter Property="Clip" Value="{StaticResource FolderLargeGeometryForeClosed}" />
     </Style>
     <Style
         x:Key="FolderStyleForeOpen"
@@ -487,6 +635,38 @@
         BasedOn="{StaticResource FolderItemStyle}"
         TargetType="{x:Type Path}">
         <Setter Property="Clip" Value="{StaticResource FolderItemGeometry}" />
+        <Setter Property="StrokeThickness" Value="2" />
+        <Setter Property="Stroke">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="#f8f8f8" />
+                    <GradientStop Offset="1" Color="#d0d0d0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <BlurEffect Radius="3" RenderingBias="Performance" />
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Flags.FileColor}" Value="True">
+                <Setter Property="Stroke">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Offset="0" Color="{Binding Path=Colors.File.Light}" />
+                            <GradientStop Offset="1" Color="{Binding Path=Colors.File.Dark}" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style
+        x:Key="FolderLargeItemStyleFore"
+        BasedOn="{StaticResource FolderItemStyle}"
+        TargetType="{x:Type Path}">
+        <Setter Property="Clip" Value="{StaticResource FolderLargeItemGeometry}" />
         <Setter Property="StrokeThickness" Value="2" />
         <Setter Property="Stroke">
             <Setter.Value>

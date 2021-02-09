@@ -19,13 +19,13 @@
                                          FalseValue="{x:Static Visibility.Visible}"
                                          x:Key="CursorVisibilityConverter" />
             <!-- Rows 16 Base-->
-            <system:Double x:Key="Row1">70</system:Double>
-            <system:Double x:Key="Row2">123</system:Double>
+            <system:Double x:Key="Row1">80</system:Double>
+            <system:Double x:Key="Row2">160</system:Double>
             <system:Double x:Key="Row3">176</system:Double>
             <!-- Columns 1 Base-->
-            <system:Double x:Key="Column1">54</system:Double>
-            <system:Double x:Key="Column2">107</system:Double>
-            <system:Double x:Key="Column3">160</system:Double>
+            <system:Double x:Key="Column1">82</system:Double>
+            <system:Double x:Key="Column2">162</system:Double>
+            <system:Double x:Key="Column3">244</system:Double>
             <system:Double x:Key="Column4">213</system:Double>
             <system:Double x:Key="Column5">266</system:Double>
 
@@ -97,9 +97,9 @@
             Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Preview_Main_CartEnable, Converter={StaticResource BooleanToVisibilityConverter}}"
             Canvas.Left="{Binding Source={x:Static properties:Settings.Default}, Path=Preview_Main_CartX , Converter={StaticResource ColumnSelector}}"
             Canvas.Top="{Binding Source={x:Static properties:Settings.Default}, Path=Preview_Main_CartY, Converter={StaticResource RowSelector}}">
-            <Canvas Style="{StaticResource PreviewItemShadowCaster}">
-                <Path Style="{StaticResource NoCartStyleBack}" Data="{StaticResource FileGeometry}" />
-                <Path Style="{StaticResource NoCartStyleFore}" Data="{StaticResource NoCartGeometryFore}" />
+            <Canvas Style="{StaticResource PreviewItemShadowCaster}" Opacity="0.8">
+                <Path Style="{StaticResource NoCartStyleBack}" Data="{StaticResource FileCartGeometry}" />
+                <Path Style="{StaticResource NoCartStyleFore}" Data="{StaticResource NoCartLargeGeometryFore}" />
             </Canvas>
         </Canvas>
         <!-- File -->
@@ -108,10 +108,10 @@
             Canvas.Left="{Binding Source={x:Static properties:Settings.Default}, Path=Preview_Main_FileX , Converter={StaticResource ColumnSelector}}"
             Canvas.Top="{Binding Source={x:Static properties:Settings.Default}, Path=Preview_Main_FileY, Converter={StaticResource RowSelector}}">
             <Canvas Style="{StaticResource PreviewFileShadowCaster}">
-                <Path Style="{StaticResource FileStyleBack}" Data="{StaticResource FileGeometry}" />
+                <Path Style="{StaticResource FileLargeStyleBack}" Data="{StaticResource FileLargeGeometry}" />
             </Canvas>
-            <Path Style="{StaticResource FileStyleFore}" Data="{StaticResource FileGeometry}" />
-            <Path Data="{StaticResource FileLabelGeometry}">
+            <Path Style="{StaticResource FileStyleFore}" Data="{StaticResource FileLargeGeometry}" />
+            <Path Data="{StaticResource FileLargeLabelGeometry}" >
                 <Path.Fill>
                     <ImageBrush ImageSource="{Binding Path=Info.LargeIcon.Bitmap}" Stretch="Fill" />
                 </Path.Fill>
@@ -123,17 +123,14 @@
             Canvas.Left="{Binding Source={x:Static properties:Settings.Default}, Path=Preview_Main_FolderX , Converter={StaticResource ColumnSelector}}"
             Canvas.Top="{Binding Source={x:Static properties:Settings.Default}, Path=Preview_Main_FolderY, Converter={StaticResource RowSelector}}">
             <Canvas Style="{StaticResource PreviewFolderShadowCaster}">
-                <Path Style="{StaticResource FolderStyleBackClosed}" Data="{StaticResource FolderGeometryBackClosed}" />
+                <Path Style="{StaticResource FolderLargeStyleBackClosed}" Data="{StaticResource FolderLargeGeometryBackClosed}" />
             </Canvas>
 
-            <Canvas>
-                <Canvas.Clip>
-                    <RectangleGeometry Rect="-20,-23,40,9" />
-                </Canvas.Clip>
-                <Path Style="{StaticResource FolderItemStyleBack}" Data="{StaticResource FolderItemGeometry}" />
-                <Path Style="{StaticResource FolderItemStyleFore}" Data="{StaticResource FolderItemGeometry}" />
+            <Canvas Clip="{StaticResource FolderLargeItemClipGeometry}" >
+                <Path Style="{StaticResource FolderItemStyleBack}" Data="{StaticResource FolderLargeItemGeometry}" />
+                <Path Style="{StaticResource FolderLargeItemStyleFore}" Data="{StaticResource FolderLargeItemGeometry}" />
             </Canvas>
-            <Path Style="{StaticResource FolderStyleForeClosed}" Data="{StaticResource FolderGeometryForeClosed}" />
+            <Path Style="{StaticResource FolderLargeStyleForeClosed}" Data="{StaticResource FolderLargeGeometryForeClosed}" />
         </Canvas>
         <!-- Cursor -->
         <Canvas
@@ -146,8 +143,8 @@
                     <Binding Source="{x:Static properties:Settings.Default}" Path="Preview_Main_CursorEnable" />
                 </MultiBinding>
             </Canvas.Visibility>
-            <Path Style="{StaticResource CursorStyleSolid}" Data="{StaticResource CursorGeometry}" />
-            <Path Style="{StaticResource CursorStyleGlow}" Data="{StaticResource CursorGeometry}" />
+            <Path Style="{StaticResource CursorStyleSolid}" Data="{StaticResource CursorLargeGeometry}" />
+            <Path Style="{StaticResource CursorStyleGlow}" Data="{StaticResource CursorLargeGeometry}" />
         </Canvas>
 
     </Canvas>
