@@ -21,28 +21,20 @@
             <!-- Rows 16 Base-->
             <system:Double x:Key="Row1">80</system:Double>
             <system:Double x:Key="Row2">160</system:Double>
-            <system:Double x:Key="Row3">176</system:Double>
             <!-- Columns 1 Base-->
             <system:Double x:Key="Column1">82</system:Double>
             <system:Double x:Key="Column2">162</system:Double>
             <system:Double x:Key="Column3">244</system:Double>
-            <system:Double x:Key="Column4">213</system:Double>
-            <system:Double x:Key="Column5">266</system:Double>
 
             <templating:SwitchConverter x:Key="RowSelector">
                 <templating:SwitchConverterCase Value="{StaticResource Row1}">
                     <templating:SwitchConverterCase.Case>
-                        <system:Int32>2</system:Int32>
+                        <system:Int32>1</system:Int32>
                     </templating:SwitchConverterCase.Case>
                 </templating:SwitchConverterCase>
                 <templating:SwitchConverterCase  Value="{StaticResource Row2}">
                     <templating:SwitchConverterCase.Case>
-                        <system:Int32>1</system:Int32>
-                    </templating:SwitchConverterCase.Case>
-                </templating:SwitchConverterCase>
-                <templating:SwitchConverterCase  Value="{StaticResource Row3}">
-                    <templating:SwitchConverterCase.Case>
-                        <system:Int32>0</system:Int32>
+                        <system:Int32>2</system:Int32>
                     </templating:SwitchConverterCase.Case>
                 </templating:SwitchConverterCase>
             </templating:SwitchConverter>
@@ -50,27 +42,17 @@
             <templating:SwitchConverter x:Key="ColumnSelector">
                 <templating:SwitchConverterCase Value="{StaticResource Column1}">
                     <templating:SwitchConverterCase.Case>
-                        <system:Int32>0</system:Int32>
+                        <system:Int32>1</system:Int32>
                     </templating:SwitchConverterCase.Case>
                 </templating:SwitchConverterCase>
                 <templating:SwitchConverterCase Value="{StaticResource Column2}">
                     <templating:SwitchConverterCase.Case>
-                        <system:Int32>1</system:Int32>
+                        <system:Int32>2</system:Int32>
                     </templating:SwitchConverterCase.Case>
                 </templating:SwitchConverterCase>
                 <templating:SwitchConverterCase Value="{StaticResource Column3}">
                     <templating:SwitchConverterCase.Case>
-                        <system:Int32>2</system:Int32>
-                    </templating:SwitchConverterCase.Case>
-                </templating:SwitchConverterCase>
-                <templating:SwitchConverterCase Value="{StaticResource Column4}">
-                    <templating:SwitchConverterCase.Case>
                         <system:Int32>3</system:Int32>
-                    </templating:SwitchConverterCase.Case>
-                </templating:SwitchConverterCase>
-                <templating:SwitchConverterCase Value="{StaticResource Column5}">
-                    <templating:SwitchConverterCase.Case>
-                        <system:Int32>4</system:Int32>
                     </templating:SwitchConverterCase.Case>
                 </templating:SwitchConverterCase>
             </templating:SwitchConverter>

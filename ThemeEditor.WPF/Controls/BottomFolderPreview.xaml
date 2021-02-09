@@ -38,7 +38,7 @@
                 </templating:SwitchConverterCase>
                 <templating:SwitchConverterCase Value="{StaticResource Row2}">
                     <templating:SwitchConverterCase.Case>
-                        <system:Int32>0</system:Int32>
+                        <system:Int32>2</system:Int32>
                     </templating:SwitchConverterCase.Case>
                 </templating:SwitchConverterCase>
             </templating:SwitchConverter>
@@ -46,27 +46,27 @@
             <templating:SwitchConverter x:Key="ColumnSelector">
                 <templating:SwitchConverterCase Value="{StaticResource Column1}">
                     <templating:SwitchConverterCase.Case>
-                        <system:Int32>0</system:Int32>
+                        <system:Int32>1</system:Int32>
                     </templating:SwitchConverterCase.Case>
                 </templating:SwitchConverterCase>
                 <templating:SwitchConverterCase Value="{StaticResource Column2}">
                     <templating:SwitchConverterCase.Case>
-                        <system:Int32>1</system:Int32>
+                        <system:Int32>2</system:Int32>
                     </templating:SwitchConverterCase.Case>
                 </templating:SwitchConverterCase>
                 <templating:SwitchConverterCase Value="{StaticResource Column3}">
                     <templating:SwitchConverterCase.Case>
-                        <system:Int32>2</system:Int32>
+                        <system:Int32>3</system:Int32>
                     </templating:SwitchConverterCase.Case>
                 </templating:SwitchConverterCase>
                 <templating:SwitchConverterCase Value="{StaticResource Column4}">
                     <templating:SwitchConverterCase.Case>
-                        <system:Int32>3</system:Int32>
+                        <system:Int32>4</system:Int32>
                     </templating:SwitchConverterCase.Case>
                 </templating:SwitchConverterCase>
                 <templating:SwitchConverterCase Value="{StaticResource Column5}">
                     <templating:SwitchConverterCase.Case>
-                        <system:Int32>4</system:Int32>
+                        <system:Int32>5</system:Int32>
                     </templating:SwitchConverterCase.Case>
                 </templating:SwitchConverterCase>
             </templating:SwitchConverter>

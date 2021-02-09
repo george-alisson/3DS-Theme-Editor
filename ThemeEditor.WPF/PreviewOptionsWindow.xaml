@@ -73,7 +73,7 @@
                     Grid.Row="0"
                     Grid.Column="3"
                     Maximum="2"
-                    Minimum="0"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Main_CartEnable}"
                     Value="{markup:Setting Path=Preview_Main_CartY}" />
                 <TextBlock
@@ -83,8 +83,8 @@
                 <xctk:IntegerUpDown
                     Grid.Row="0"
                     Grid.Column="5"
-                    Maximum="4"
-                    Minimum="0"
+                    Maximum="3"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Main_CartEnable}"
                     Value="{markup:Setting Path=Preview_Main_CartX}" />
 
@@ -105,7 +105,7 @@
                     Grid.Row="1"
                     Grid.Column="3"
                     Maximum="2"
-                    Minimum="0"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Main_FileEnable}"
                     Value="{markup:Setting Path=Preview_Main_FileY}" />
                 <TextBlock
@@ -115,8 +115,8 @@
                 <xctk:IntegerUpDown
                     Grid.Row="1"
                     Grid.Column="5"
-                    Maximum="4"
-                    Minimum="0"
+                    Maximum="3"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Main_FileEnable}"
                     Value="{markup:Setting Path=Preview_Main_FileX}" />
 
@@ -137,7 +137,7 @@
                     Grid.Row="2"
                     Grid.Column="3"
                     Maximum="2"
-                    Minimum="0"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Main_FolderEnable}"
                     Value="{markup:Setting Path=Preview_Main_FolderY}" />
                 <TextBlock
@@ -147,8 +147,8 @@
                 <xctk:IntegerUpDown
                     Grid.Row="2"
                     Grid.Column="5"
-                    Maximum="4"
-                    Minimum="0"
+                    Maximum="3"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Main_FolderEnable}"
                     Value="{markup:Setting Path=Preview_Main_FolderX}" />
 
@@ -169,7 +169,7 @@
                     Grid.Row="3"
                     Grid.Column="3"
                     Maximum="2"
-                    Minimum="0"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Main_CursorEnable}"
                     Value="{markup:Setting Path=Preview_Main_CursorY}" />
                 <TextBlock
@@ -179,8 +179,8 @@
                 <xctk:IntegerUpDown
                     Grid.Row="3"
                     Grid.Column="5"
-                    Maximum="4"
-                    Minimum="0"
+                    Maximum="3"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Main_CursorEnable}"
                     Value="{markup:Setting Path=Preview_Main_CursorX}" />
 
@@ -220,8 +220,8 @@
                 <xctk:IntegerUpDown
                     Grid.Row="0"
                     Grid.Column="3"
-                    Maximum="1"
-                    Minimum="0"
+                    Maximum="2"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Folder_FileEnable}"
                     Value="{markup:Setting Path=Preview_Folder_FileY}" />
                 <TextBlock
@@ -231,8 +231,8 @@
                 <xctk:IntegerUpDown
                     Grid.Row="0"
                     Grid.Column="5"
-                    Maximum="4"
-                    Minimum="0"
+                    Maximum="5"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Folder_FileEnable}"
                     Value="{markup:Setting Path=Preview_Folder_FileX}" />
 
@@ -252,8 +252,8 @@
                 <xctk:IntegerUpDown
                     Grid.Row="1"
                     Grid.Column="3"
-                    Maximum="1"
-                    Minimum="0"
+                    Maximum="2"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Folder_FolderEnable}"
                     Value="{markup:Setting Path=Preview_Folder_FolderY}" />
                 <TextBlock
@@ -263,8 +263,8 @@
                 <xctk:IntegerUpDown
                     Grid.Row="1"
                     Grid.Column="5"
-                    Maximum="4"
-                    Minimum="0"
+                    Maximum="5"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Folder_FolderEnable}"
                     Value="{markup:Setting Path=Preview_Folder_FolderX}" />
 
@@ -284,8 +284,8 @@
                 <xctk:IntegerUpDown
                     Grid.Row="2"
                     Grid.Column="3"
-                    Maximum="1"
-                    Minimum="0"
+                    Maximum="2"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Folder_CursorEnable}"
                     Value="{markup:Setting Path=Preview_Folder_CursorY}" />
                 <TextBlock
@@ -295,8 +295,8 @@
                 <xctk:IntegerUpDown
                     Grid.Row="2"
                     Grid.Column="5"
-                    Maximum="4"
-                    Minimum="0"
+                    Maximum="5"
+                    Minimum="1"
                     IsEnabled="{markup:Setting Path=Preview_Folder_CursorEnable}"
                     Value="{markup:Setting Path=Preview_Folder_CursorX}" />
 
