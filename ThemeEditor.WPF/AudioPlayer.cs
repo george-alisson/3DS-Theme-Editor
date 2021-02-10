@@ -33,10 +33,13 @@ namespace ThemeEditor.WPF
             get { return _volume; }
             set
             {
-                if (Math.Abs(_waveOut.Volume - value) < 0.001f)
-                    return;
-                _waveOut.Volume = _volume = value;
-                OnPropertyChanged(nameof(Volume));
+                if (_waveOut != null)
+                {
+                    if (Math.Abs(_waveOut.Volume - value) < 0.001f)
+                        return;
+                    _waveOut.Volume = _volume = value;
+                    OnPropertyChanged(nameof(Volume));
+                }
             }
         }
 
